@@ -35,5 +35,49 @@ public class PlayerMovement : MonoBehaviour {
      *      A value to keep track of the player's movement speed and direction
      *      You will probably need to use the Update function as well as create functions for moving platforms and enemies
      */
+	
+	//Jumping
 
+
+	private int movingRight = 1;
+	private int movingLeft = -1;
+	private int jumping = 1;
+	private float speed = 2f;
+	public float fallSpeed = 8.0f;
+
+	void Start() 
+	{
+	
+	}
+	
+	void Update(){
+		
+		//transform.Translate (Vector3.down * fallSpeed * Time.deltaTime, Space.World);
+		
+		if ((Input.GetKey (KeyCode.D))) {
+			transform.Translate (new Vector3 (Time.deltaTime * speed * movingRight, 0, 0));
+		}
+		else if ((Input.GetKey (KeyCode.A))) {
+			transform.Translate (new Vector3 (Time.deltaTime * speed * movingLeft, 0, 0));
+		}
+		else if ((Input.GetKey (KeyCode.Space))) {
+			transform.Translate (new Vector3 (0, Time.deltaTime * speed * jumping, 0));
+		}
+
+		/*
+		void OnCollisionEnter(Collision collision)
+		{
+			Debug.Log("Hit Something!");
+		}
+		void OnCollisionStay(Collision collision)
+		{
+			Debug.Log("Hit Something!");
+		}
+		void OnCollisionExit(Collision collision)
+		{
+			Debug.Log("Hit Something!");
+		}
+*/
+		
+	}
 }
